@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="col-8">
+      <div class="restaurant">
+        <h2>
+          <%=@restaurant.name%>
+        </h2>
+        <i><%= link_to '', edit_restaurant_path, class: 'fas fa-edit btn btn-success m-3 p-2' %></i>
+        <i><%= link_to '', restaurant_path(@restaurant), method: :delete, class: 'fas fa-trash btn btn-danger m-3 p-2' %></i>
+        <p>
+          <%= @restaurant.address%>
+        </p>
+        <p>
+          <%= @restaurant.phone_number%>
+        </p>
+        <p>
+          <%= @restaurant.category%>
+        </p>
+        <p>
+          Reviews :
+        <ul class="list-group">
+          <%@restaurant.reviews.each do |review|%>
+          <li class="list-group-item">
+            <%= review.content%>
+          </li>
+        <% end %>
+        </ul>
+
+        </p>
+        <%= link_to 'add review', new_restaurant_review_path(@restaurant)%>
+        <%= link_to 'back to list', restaurants_path%>
+      </div>
+    </div>
+  </div>
+</div>
